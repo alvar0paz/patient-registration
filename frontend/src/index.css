@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Reset and base styles */
 * {
   margin: 0;
   padding: 0;
@@ -15,7 +14,6 @@ html, body {
   overflow-x: hidden;
 }
 
-/* Your custom styles */
 @layer base {
   body {
     @apply antialiased bg-white;
@@ -31,13 +29,11 @@ html, body {
   }
 }
 
-/* Root container styles */
 #root {
   width: 100%;
   min-height: 100vh;
 }
 
-/* Remove the conflicting dark mode styles since we're using Tailwind */
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
