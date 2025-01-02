@@ -1,0 +1,6 @@
+# .gitignore
+node_modules/
+# .env
+.pnpm-store
+uploads/
+*.log
