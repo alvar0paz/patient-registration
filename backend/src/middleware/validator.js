@@ -15,10 +15,7 @@ export const validatePatient = [
     .matches(/@gmail\.com$/)
     .withMessage('Only @gmail.com emails are allowed'),
 
-  body('countryCode')
-    .trim()
-    .notEmpty()
-    .withMessage('Country code is required'),
+  body('countryCode').trim().notEmpty().withMessage('Country code is required'),
 
   body('phoneNumber')
     .trim()

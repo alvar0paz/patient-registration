@@ -25,8 +25,10 @@ const PatientForm: React.FC<PatientFormProps> = ({ onClose, onSuccess }) => {
   const validateForm = () => {
     const newErrors: Record<string, string> = {};
 
-    if (!/^[a-zA-Z\s]*$/.test(formData.name)) newErrors.name = 'Name must contain only letters and spaces';
-    if (!formData.email.endsWith('@gmail.com')) newErrors.email = 'Only @gmail.com emails are allowed';
+    if (!/^[a-zA-Z\s]*$/.test(formData.name))
+      newErrors.name = 'Name must contain only letters and spaces';
+    if (!formData.email.endsWith('@gmail.com'))
+      newErrors.email = 'Only @gmail.com emails are allowed';
     if (!formData.countryCode) newErrors.countryCode = 'Country code is required';
     if (!formData.phoneNumber) newErrors.phoneNumber = 'Phone number is required';
     if (!formData.documentPhoto) newErrors.documentPhoto = 'Document photo is required';
@@ -75,10 +77,38 @@ const PatientForm: React.FC<PatientFormProps> = ({ onClose, onSuccess }) => {
         <h2 className="text-2xl font-bold mb-4">Add New Patient</h2>
         <form onSubmit={handleSubmit} className="space-y-4">
           {[
-            { label: 'Name', type: 'text', value: formData.name, error: errors.name, placeholder: 'Enter patient name', onChange: (value: string) => ({ name: value }) },
-            { label: 'Email', type: 'email', value: formData.email, error: errors.email, placeholder: 'example@gmail.com', onChange: (value: string) => ({ email: value }) },
-            { label: 'Country Code', type: 'text', value: formData.countryCode, error: errors.countryCode, placeholder: '+1', onChange: (value: string) => ({ countryCode: value }) },
-            { label: 'Phone Number', type: 'tel', value: formData.phoneNumber, error: errors.phoneNumber, placeholder: '123456789', onChange: (value: string) => ({ phoneNumber: value }) },
+            {
+              label: 'Name',
+              type: 'text',
+              value: formData.name,
+              error: errors.name,
+              placeholder: 'Enter patient name',
+              onChange: (value: string) => ({ name: value }),
+            },
+            {
+              label: 'Email',
+              type: 'email',
+              value: formData.email,
+              error: errors.email,
+              placeholder: 'example@gmail.com',
+              onChange: (value: string) => ({ email: value }),
+            },
+            {
+              label: 'Country Code',
+              type: 'text',
+              value: formData.countryCode,
+              error: errors.countryCode,
+              placeholder: '+1',
+              onChange: (value: string) => ({ countryCode: value }),
+            },
+            {
+              label: 'Phone Number',
+              type: 'tel',
+              value: formData.phoneNumber,
+              error: errors.phoneNumber,
+              placeholder: '123456789',
+              onChange: (value: string) => ({ phoneNumber: value }),
+            },
           ].map(({ label, type, value, error, placeholder, onChange }, index) => (
             <div key={index}>
               <label className="block text-sm font-medium text-gray-700">{label}</label>
@@ -105,9 +135,16 @@ const PatientForm: React.FC<PatientFormProps> = ({ onClose, onSuccess }) => {
           ))}
           <div>
             <label className="block text-sm font-medium text-gray-700">Document Photo</label>
-            <div {...getRootProps()} className={`mt-1 border-2 border-dashed rounded-md p-6 ${isDragActive ? 'border-blue-500 bg-blue-50' : 'border-gray-300'}`}>
+            <div
+              {...getRootProps()}
+              className={`mt-1 border-2 border-dashed rounded-md p-6 ${isDragActive ? 'border-blue-500 bg-blue-50' : 'border-gray-300'}`}
+            >
               <input {...getInputProps()} />
-              <p className="text-center text-gray-600">{formData.documentPhoto ? formData.documentPhoto.name : 'Drop your document photo here, or click to select'}</p>
+              <p className="text-center text-gray-600">
+                {formData.documentPhoto
+                  ? formData.documentPhoto.name
+                  : 'Drop your document photo here, or click to select'}
+              </p>
             </div>
             <AnimatePresence>
               {errors.documentPhoto && (
@@ -123,10 +160,18 @@ const PatientForm: React.FC<PatientFormProps> = ({ onClose, onSuccess }) => {
             </AnimatePresence>
           </div>
           <div className="flex justify-end space-x-3 mt-6">
-            <button onClick={onClose} type="button" className="px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50">
+            <button
+              onClick={onClose}
+              type="button"
+              className="px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50"
+            >
               Cancel
             </button>
-            <button type="submit" disabled={isSubmitting} className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 disabled:opacity-50">
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 disabled:opacity-50"
+            >
               {isSubmitting ? 'Submitting...' : 'Submit'}
             </button>
           </div>
@@ -140,7 +185,9 @@ const PatientForm: React.FC<PatientFormProps> = ({ onClose, onSuccess }) => {
               className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50"
             >
               <div className="bg-white p-6 rounded-lg">
-                {submitStatus === 'success' ? 'Patient registered successfully!' : 'Error registering patient. Please try again.'}
+                {submitStatus === 'success'
+                  ? 'Patient registered successfully!'
+                  : 'Error registering patient. Please try again.'}
               </div>
             </motion.div>
           )}

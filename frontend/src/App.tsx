@@ -44,9 +44,7 @@ const App: React.FC = () => {
 
         <PatientList patients={patients} />
 
-        {isFormOpen && (
-          <PatientForm onClose={handleFormClose} onSuccess={handleFormSuccess} />
-        )}
+        {isFormOpen && <PatientForm onClose={handleFormClose} onSuccess={handleFormSuccess} />}
       </div>
     </div>
   );

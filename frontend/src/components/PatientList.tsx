@@ -30,14 +30,8 @@ const PatientList: React.FC<PatientListProps> = ({ patients }) => {
     <div className="max-h-[60vh] overflow-y-auto">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {patients.map((patient) => (
-          <div
-            key={patient.id}
-            className="bg-white rounded-lg shadow-md h-fit"
-          >
-            <div
-              onClick={() => toggleExpand(patient.id)}
-              className="cursor-pointer p-4"
-            >
+          <div key={patient.id} className="bg-white rounded-lg shadow-md h-fit">
+            <div onClick={() => toggleExpand(patient.id)} className="cursor-pointer p-4">
               <div className="flex items-center space-x-4">
                 {imageErrors.has(patient.id) ? (
                   <div className="w-16 h-16 bg-gray-200 rounded flex items-center justify-center">
@@ -54,15 +48,15 @@ const PatientList: React.FC<PatientListProps> = ({ patients }) => {
                 <h3 className="font-medium text-lg truncate flex-1">{patient.name}</h3>
               </div>
             </div>
-            
+
             <AnimatePresence initial={false}>
               {expandedId === patient.id && (
                 <motion.div
                   initial={{ height: 0, opacity: 0 }}
-                  animate={{ height: "auto", opacity: 1 }}
+                  animate={{ height: 'auto', opacity: 1 }}
                   exit={{ height: 0, opacity: 0 }}
                   transition={{ duration: 0.2 }}
-                  style={{ overflow: "hidden" }}
+                  style={{ overflow: 'hidden' }}
                   className="border-t border-gray-100"
                 >
                   <div className="bg-gray-50 p-4 space-y-2">
@@ -72,7 +66,9 @@ const PatientList: React.FC<PatientListProps> = ({ patients }) => {
                     </div>
                     <div className="flex">
                       <span className="font-medium flex-shrink-0">Phone:&nbsp;</span>
-                      <span className="truncate">{patient.countryCode} {patient.phoneNumber}</span>
+                      <span className="truncate">
+                        {patient.countryCode} {patient.phoneNumber}
+                      </span>
                     </div>
                     <div className="flex">
                       <span className="font-medium flex-shrink-0">Registered:&nbsp;</span>
